@@ -1,10 +1,13 @@
 //determine if a one to one mapping exists from string s1 to another string s2
-function mapcheck(str1, str2) {
+function mapcheck(...args) {
+  const str1 = args[0];
+  const str2 = args[1];
   //if str1.length !== str2.length print false
   if (str1.length !== str2.length) {
     console.log(false);
     return;
   }
+  //Time Complexity O(1)
 
   //create empty object to store SEEN character and for quick lookup time
   const charExist = {};
@@ -21,8 +24,14 @@ function mapcheck(str1, str2) {
       newStr += char;
     }
   }
+  //Time Complexity: O(n)
 
   //Now check if the length of newStr === str2
   if (newStr.length === str2.length) console.log(true);
   else console.log(false);
 }
+
+//Best case time complexity : O(1)
+//Worse Case time complexity: O(n)
+
+mapcheck(...process.argv.slice(2));
